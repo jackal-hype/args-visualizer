@@ -49,11 +49,7 @@ router.patch(baseUri + '/:id', jsonParser, (req, res) => {
     if (!issue.pros) {
         issue.pros = []
     }
-    IssueModel.findOneAndUpdate( { _id: id }, issue, {
-            // upsert: true,
-            new: true,
-            runValidators: true,
-            setDefaultsOnInsert: true})
+    IssueModel.findOneAndUpdate( { _id: id }, issue)
         .exec()
         .then(doc => {
             res.status(200).json({ok: true})
