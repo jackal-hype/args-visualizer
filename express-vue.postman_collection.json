@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "919d14db-cda4-417b-980d-341348599d29",
+		"name": "express-vue",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PUT issue",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"issue\": {\n        \"title\": \"let the dogs out\",\n        \"problem\": \"meh?\",\n        \"pros\": [\n            {\n                \"title\": \"me so good\",\n                \"fontSize\": \"25\"\n            },\n            {\n                \"title\": \"очень плохая музыка!\",\n                \"fontSize\": 14\n            }\n        ],\n        \"cons\": [\n            {\n                \"title\": \"wut cons?\"\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/issues",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"issues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET issues",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/issues",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"issues"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET issue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/issues/5cd8282cc3c84110402abb1e",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"issues",
+						"5cd8282cc3c84110402abb1e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE issue",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/issues/5cd824b94b5b9c1920790901",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"issues",
+						"5cd824b94b5b9c1920790901"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH issue",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"issue\": {\n        \"title\": \"let the dogs out\",\n        \"problem\": \"meh?\",\n        \"pros\": [\n            {\n                \"title\": \"me so clever\",\n                \"fontSize\": \"26\"\n            },\n            {\n                \"title\": \"очень плохая музыка, я думал намного лучше будет!\",\n                \"fontWeight\": 700\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/v1/issues/5cd8247c7ed0e11d1042ff9e",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"issues",
+						"5cd8247c7ed0e11d1042ff9e"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
