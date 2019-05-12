@@ -7,14 +7,17 @@ const bodyParser = require('body-parser')
 const jsonParser = bodyParser.json()
 
 router.get(baseUri + '/:id', (req, res) => {
-    // console.log(req.query, req.path, req.baseUrl)
-    // res.send('<pre>' + util.inspect(req));    
-    const db = req.app.get('db')
-    const id = req.params.id    
-    res.send()
-}) 
+    const id = req.params.id
+    IssueModel.findById(id).exec()
+        .then(doc => {
+            res.status(200).json({issue: doc})
+        })
+        .catch(err => {
+            res.status(400).json({error: `Issue not found: ${id}`})
+        })
+})
 
-router.get(baseUri + '/', (req, res) => {    
+router.get(baseUri + '/', (req, res) => {
     // const db = req.app.get('db')
     IssueModel.find().exec()
         .then(docs => {
@@ -32,18 +35,38 @@ router.put(baseUri + '/', jsonParser, (req, res, next) => {
     IssueModel(issue).save().then(result => {
         console.log('_id: ', result._id)
         res.send('put issue ok')
-    }).catch(err => {  
-        next(err) 
+    }).catch(err => {
+        next(err)
     })
 })
 
-router.patch(baseUri + '/:id', (req, res) => {
+router.patch(baseUri + '/:id', jsonParser, (req, res) => {
+    let id = req.params.id
+    let issue = req.body.issue
+    if (!issue.cons) {
+        issue.cons = []
+    }
+    if (!issue.pros) {
+        issue.pros = []
+    }
+    IssueModel.update( { _id: id }, issue).exec()
+        .then(doc => {
+            res.status(200).json({ok: true})
+        })
+        .catch(err => {
+            res.status(400).json({error: `Unable to patch ${id}`})
+        })
+})
 
-}) 
-
-router.delete(baseUri + '/issues/:id', (req, res) => {
-    // const issues = loadIssuesCollection()
-    // issues.deleteOne({_id: new mongodb.ObjectID(req.params.id)})
+router.delete(baseUri + '/:id', (req, res) => {
+    let id = req.params.id
+    IssueModel.findByIdAndRemove(id)
+        .then(() => {
+            res.status(200).json({ok: true})
+        })
+        .catch(err => {
+            res.status(400).json({error: 'unable to remove'})
+        })
 })
 
 module.exports = router
