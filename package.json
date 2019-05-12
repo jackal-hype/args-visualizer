@@ -7,9 +7,6 @@
     "start": "node server.js",
     "devStart": "nodemon server.js"
   },
-  "browser": {
-    "vue": "vue/dist/vue.common"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -17,8 +14,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-ejs-layouts": "^2.5.0",
-    "mongoose": "^5.5.5",
-    "vue": "^2.6.10"
+    "mongoose": "^5.5.5"
   },
   "devDependencies": {
     "dotenv": "^8.0.0",
