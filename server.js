@@ -32,7 +32,7 @@ app.set('db', db)
 app.use('/', indexRouter)
 app.use('/api/v1/issues', issuesRouter)
 
-// errors handler
+// common errors handler
 app.use(function (err, req, res, next) {
     console.error(err)
     res.status(500).json({ error: err })
