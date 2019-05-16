@@ -48,14 +48,20 @@ router.patch(baseUri + '/:id', jsonParser, (req, res) => {
     if (!issue.pros) {
         issue.pros = []
     }
-    IssueModel.findOneAndUpdate( { _id: id }, issue)
+
+    function respondErr(err) {
+        console.log(err)
+        res.status(400).json({msg: `Unable to patch ${id}`, error: err})
+    }
+
+    delete issue.updatedAt
+    IssueModel.findOneAndUpdate({ _id: id }, issue)
         .exec()
         .then(doc => {
             res.status(200).json({ok: true})
         })
-        .catch(err => {
-            res.status(400).json({error: `Unable to patch ${id}`})
-        })
+        .catch(err => { respondErr(err) })
+
 })
 
 router.delete(baseUri + '/:id', (req, res) => {
