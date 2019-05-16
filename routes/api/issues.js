@@ -32,7 +32,7 @@ router.put(baseUri + '/', jsonParser, (req, res, next) => {
     const db = req.app.get('db')
     let issue = req.body.issue
     IssueModel(issue).save().then(result => {
-        console.log('_id: ', result._id)
+        // console.log('_id: ', result._id)
         res.send('put issue ok')
     }).catch(err => {
         next(err)
