@@ -18,8 +18,7 @@ router.get(baseUri + '/:id', (req, res) => {
 })
 
 router.get(baseUri + '/', (req, res) => {
-    // const db = req.app.get('db')
-    IssueModel.find().exec()
+    IssueModel.find().sort({updatedAt: -1}).limit(10).exec()
         .then(docs => {
             res.status(200).json(docs)
         })
